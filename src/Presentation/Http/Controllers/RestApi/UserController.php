@@ -23,7 +23,7 @@ class UserController extends BaseRestApiV1Controller
             return Json::buildFailedResponse();
         }
 
-        return Json::buildItems(['user_id' => $user->id]);
+        return Json::buildResponse(['user_id' => $user->id]);
     }
 
     public function login(Request $request)
@@ -41,7 +41,7 @@ class UserController extends BaseRestApiV1Controller
 
         $token = $user->createToken(env('APP_NAME'))->accessToken;
 
-        return Json::buildItems([
+        return Json::buildResponse([
             'access_token' => $token,
         ]);
     }

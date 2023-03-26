@@ -12,7 +12,7 @@ class IndexController extends BaseRestApiV1Controller
 {
     public function home(): JsonResponse
     {
-        return Json::buildItems([
+        return Json::buildResponse([
             'message' => 'Welcome to Testing Aspire fron npbtrac@gmail Rest API',
         ]);
     }

@@ -1,0 +1,503 @@
+{
+	"info": {
+		"_postman_id": "bf8a1450-ba82-466e-b338-6ef2ae226c7c",
+		"name": "Testing Aspire",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18665144"
+	},
+	"item": [
+		{
+			"name": "Customers",
+			"item": [
+				{
+					"name": "Loans",
+					"item": [
+						{
+							"name": "Submit Loan",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "{{accept}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "amount",
+											"value": "14000",
+											"type": "text"
+										},
+										{
+											"key": "term",
+											"value": "4",
+											"type": "text"
+										},
+										{
+											"key": "request_date",
+											"value": "2023-05-07",
+											"description": "YYYY-mm-dd (must be a future date)",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{api_base_url}}/customers/loans/submit-loan",
+									"host": [
+										"{{api_base_url}}"
+									],
+									"path": [
+										"customers",
+										"loans",
+										"submit-loan"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "List Loans",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "{{accept}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{api_base_url}}/customers/loans",
+									"host": [
+										"{{api_base_url}}"
+									],
+									"path": [
+										"customers",
+										"loans"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "View Loan",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "{{accept}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{api_base_url}}/customers/loans/:loan_id",
+									"host": [
+										"{{api_base_url}}"
+									],
+									"path": [
+										"customers",
+										"loans",
+										":loan_id"
+									],
+									"variable": [
+										{
+											"key": "loan_id",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"auth": {
+						"type": "bearer",
+						"bearer": [
+							{
+								"key": "token",
+								"value": "{{access_token}}",
+								"type": "string"
+							}
+						]
+					},
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "Repayments",
+					"item": [
+						{
+							"name": "Pay Repayment",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "{{accept}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "amount",
+											"value": "3000",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{api_base_url}}/customers/repayments/:repayment_id/pay",
+									"host": [
+										"{{api_base_url}}"
+									],
+									"path": [
+										"customers",
+										"repayments",
+										":repayment_id",
+										"pay"
+									],
+									"variable": [
+										{
+											"key": "repayment_id",
+											"value": "7"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"auth": {
+						"type": "bearer",
+						"bearer": [
+							{
+								"key": "token",
+								"value": "{{access_token}}",
+								"type": "string"
+							}
+						]
+					},
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "{{accept}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "test05",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "test05@yahoo.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{api_base_url}}/customers/register",
+							"host": [
+								"{{api_base_url}}"
+							],
+							"path": [
+								"customers",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let response = pm.response.json();",
+									"pm.environment.set(\"access_token\", response.access_token);",
+									"pm.collectionVariables.set(\"access_token\", response.access_token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "{{accept}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "test01@yahoo.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{api_base_url}}/customers/login",
+							"host": [
+								"{{api_base_url}}"
+							],
+							"path": [
+								"customers",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.environment.set(\"accept\", \"application/json\");"
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Admins",
+			"item": [
+				{
+					"name": "Loans",
+					"item": [
+						{
+							"name": "Approve Loan",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "{{accept}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{api_base_url}}/admins/loans/:loan_id/approve",
+									"host": [
+										"{{api_base_url}}"
+									],
+									"path": [
+										"admins",
+										"loans",
+										":loan_id",
+										"approve"
+									],
+									"variable": [
+										{
+											"key": "loan_id",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"auth": {
+						"type": "bearer",
+						"bearer": [
+							{
+								"key": "token",
+								"value": "{{access_token}}",
+								"type": "string"
+							}
+						]
+					},
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let response = pm.response.json();",
+									"pm.environment.set(\"access_token\", response.access_token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "{{accept}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "admin02@yahoo.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{api_base_url}}/admins/login",
+							"host": [
+								"{{api_base_url}}"
+							],
+							"path": [
+								"admins",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "access_token",
+			"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiYzRmMTM1YzdmZmYxODg4ZjgxMDIyZmU3YzU2OTgzZGFkMDE0NTI3YzJiZGE3MWJjMTMwMzNiY2VlNTQwZjJjOGNhYmU4YWUzNjg3ZmY0ZmQiLCJpYXQiOjE2Nzk4MzU1MjkuMzYzMzY0LCJuYmYiOjE2Nzk4MzU1MjkuMzYzMzY2LCJleHAiOjE3MTE0NTc5MjkuMzUwNTkzLCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.KJSYJjREq25eCVlzXQkoF04BGfxr3Z7ktMI0SlFhAC4BswzB_c57eoKvPTauVHNd7-0PeCK8GrtOpV3qKLiLn9TDrFvcicgxniT-XdOxJdzh9hqztZP7TMx_9mRney-XT7e8PSbAD7_v1K0hkBeUvzCztYKhERxXhLSVxqeJS0v3AE5m3lMI_4a5bQpqmkcqH7sNErM3GHMvAT-LdRU8K7hezU2AqBsSOi94PnROTy4doQx_2vaSaRt6FB4epb1SF6JMJTSTMDZMWhxs6pb_UOkVTUUCdogHflGxA1NnH3DKZaW8SXE7Kl7yF6i3eu7tLoJJzDf-j3ARs1bVv8jvZus5Cu1H-VFS0vr60EzsKqmJZI5MxcJcrqaoaEasLZ6LbqhlVQpNXVufAjK0ecV0LNhqA0tHYzcSj7EBe2xS8v5H8NLgLq75VNSW6Ioi3gLVq-bMRNCxjHLPXnrSNMWp2Xwd3NOAL81oJ_A7LOqMf_GOmeFl_eMpUhw1IuP-ROlARlC49rwMHJFehEtVmtlAofHS4YPfjxSyc4A8wsrNJSH-Sm4-S8cHqw40m9u5NDtIHzgz11nIwZeayMp0j3CsSl_-cnHac2Z-TdU5-5EKASiEbEMkMmufxVhYHXrKGdUzs46Wm62owfhqZljUN7RPk_VnW5iLroDwZwxEGmTV3CM"
+		},
+		{
+			"key": "accept",
+			"value": "application/json"
+		},
+		{
+			"key": "api_base_url",
+			"value": "http://127.0.0.1:29080/api"
+		},
+		{
+			"key": "access_token",
+			"value": ""
+		}
+	]
+}

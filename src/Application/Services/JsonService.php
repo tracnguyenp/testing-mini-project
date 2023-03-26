@@ -14,7 +14,7 @@ class JsonService
      * @param array $extraHeaders
      * @return JsonResponse
      */
-    public function buildItems(
+    public function buildResponse(
         $data,
         $httpStatusCode = 200,
         $extraHeaders = []
@@ -32,13 +32,13 @@ class JsonService
     }
 
     public function buildSuccessfulResponse() {
-        return $this->buildItems([
+        return $this->buildResponse([
             'status' => 'success'
         ], 200);
     }
 
     public function buildFailedResponse() {
-        return $this->buildItems([
+        return $this->buildResponse([
             'status' => 'failure'
         ], 400);
     }
