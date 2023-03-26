@@ -4,12 +4,12 @@ namespace App\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
-use TestingAspire\Presentation\Console\Commands\CreateAdminUserCommand;
+use TestingAspire\Presentation\Console\Commands\CreateAdminUserConsoleCommand;
 
 class Kernel extends ConsoleKernel
 {
     protected $commands = [
-        CreateAdminUserCommand::class,
+        CreateAdminUserConsoleCommand::class,
     ];
 
     /**

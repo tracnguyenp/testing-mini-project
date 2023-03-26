@@ -37,5 +37,19 @@ class Handler extends ExceptionHandler
         $this->reportable(function (Throwable $e) {
             //
         });
+
+        $this->renderable(function (Throwable $e, $request) {
+            if ($request->is('api/*')) {
+                // You may want to log the error else where
+                $response = [
+                    'message' => env('APP_DEBUG') ? $e->getMessage() : 'Invalid Request',
+                    'code' => $e->getCode(),
+                ];
+                if (env('APP_DEBUG')) {
+                    $response['trace'] = $e->getTrace();
+                }
+                return response()->json($response, 400);
+            }
+        });
     }
 }

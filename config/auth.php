@@ -14,7 +14,7 @@ return [
     */
 
     'defaults' => [
-        'guard' => 'web',
+        'guard' => 'api',
         'passwords' => 'users',
     ],
 
@@ -40,6 +40,14 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        'api' => [
+            'driver' => 'passport',
+            'provider' => 'users',
+        ],
+        'client' => [
+            'driver' => 'session',
+            'provider' => 'client',
+         ],
     ],
 
     /*
@@ -62,8 +70,12 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => App\Models\User::class,
+            'model' => \TestingAspire\Domain\User\Models\User::class,
         ],
+        'client' => [
+            'driver' => 'eloquent',
+            'model' => \TestingAspire\Domain\User\Models\User::class,
+        ]
 
         // 'users' => [
         //     'driver' => 'database',

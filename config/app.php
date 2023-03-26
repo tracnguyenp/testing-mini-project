@@ -175,6 +175,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         TestingAspire\Application\Providers\JsonServiceProvider::class,
+        Laravel\Passport\PassportServiceProvider::class,
     ],
 
     /*

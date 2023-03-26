@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace TestingAspire\Application\Services;
 
 use Illuminate\Http\JsonResponse;
-use Illuminate\Support\Facades\Response;
 
 class JsonService
 {
@@ -29,6 +28,18 @@ class JsonService
             $arrHeaders = array_merge($arrHeaders, $extraHeaders);
         }
 
-        return Response::json($data, $httpStatusCode, $arrHeaders, JSON_UNESCAPED_UNICODE);
+        return response()->json($data, $httpStatusCode, $arrHeaders, JSON_UNESCAPED_UNICODE);
+    }
+
+    public function buildSuccessfulResponse() {
+        return $this->buildItems([
+            'status' => 'success'
+        ], 200);
+    }
+
+    public function buildFailedResponse() {
+        return $this->buildItems([
+            'status' => 'failure'
+        ], 400);
     }
 }

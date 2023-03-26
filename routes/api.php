@@ -14,8 +14,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::post('/admins/login', [\TestingAspire\Presentation\Http\Controllers\RestApi\AdminController::class, 'login']);
 
 Route::get('/', [\TestingAspire\Presentation\Http\Controllers\RestApi\IndexController::class, 'home']);
+Route::post('/customers/register', [\TestingAspire\Presentation\Http\Controllers\RestApi\CustomerController::class, 'register']);
+Route::post('/customers/login', [\TestingAspire\Presentation\Http\Controllers\RestApi\CustomerController::class, 'login']);
+
+Route::post('/customers/loans/submit-loan', [\TestingAspire\Presentation\Http\Controllers\RestApi\LoanController::class, 'submitLoan']);
