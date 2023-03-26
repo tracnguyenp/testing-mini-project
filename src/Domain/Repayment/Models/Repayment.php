@@ -12,6 +12,7 @@ use TestingAspire\Domain\Loan\Models\Loan;
 use TestingAspire\Domain\Repayment\Events\RepaymentPaidEvent;
 
 /**
+ * Model for `repayments` data
  *
  * @package TestingAspire\Domain\Repayment\Models
  * @property double $amount

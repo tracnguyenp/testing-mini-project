@@ -11,7 +11,7 @@ docker-compose up -d
 ```
 docker-compose exec web php artisan passport:keys
 ```
-then copy the content of `storage/oauth-private.key` to `PASSPORT_PRIVATE_KEY` and `storage/oauth-public.key` to `PASSPORT_PUBLIC_KEY` to the `.env` file
+then copy the content of `storage/oauth-private.key` to `PASSPORT_PRIVATE_KEY` and `storage/oauth-public.key` to `PASSPORT_PUBLIC_KEY` in the `.env` file
  
 
 
@@ -22,6 +22,10 @@ then copy the content of `storage/oauth-private.key` to `PASSPORT_PRIVATE_KEY` a
 - Create basic API endpoints for Customers and Admin: register, login ...
   - Good practice is to store public_key and secret_key for user and create another enpoint that is similar to login to generate access token but using public_key and secret_key instead (will do this if I have more time).
 - Create other endpoints
+- Apply phpcs to keep the codestyle
+```
+docker-compose exec web ./vendor/bin/phpcs
+```
 
 ## Workflow
 ### Prepare Postman

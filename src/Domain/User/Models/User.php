@@ -10,6 +10,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
 
 /**
+ * Model for `users` data
  *
  * @package TestingAspire\Domain\User\Models
  * @property string $role

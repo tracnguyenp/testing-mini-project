@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use TestingAspire\Domain\Repayment\Models\Repayment;
 
 /**
+ * Model for `loans` data
  *
  * @package TestingAspire\Domain\Loan\Models
  * @property int $term

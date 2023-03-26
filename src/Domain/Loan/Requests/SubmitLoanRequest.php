@@ -7,7 +7,8 @@ namespace TestingAspire\Domain\Loan\Requests;
 use Carbon\CarbonImmutable;
 use Illuminate\Foundation\Http\FormRequest;
 
-class SubmitLoanRequest extends FormRequest {
+class SubmitLoanRequest extends FormRequest
+{
     public function rules()
     {
         return [
@@ -22,7 +23,9 @@ class SubmitLoanRequest extends FormRequest {
         return [
             'amount' => $this->input('amount'),
             'term' => $this->input('term'),
-            'request_date' => CarbonImmutable::createFromTimestamp(strtotime($this->input('request_date')))->toDateTimeString(),
+            'request_date' => CarbonImmutable::createFromTimestamp(
+                strtotime($this->input('request_date'))
+            )->toDateTimeString(),
             'customer_id' => $this->user()->id,
         ];
     }

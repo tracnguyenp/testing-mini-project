@@ -6,7 +6,8 @@ namespace TestingAspire\Domain\Repayment\Events;
 
 use TestingAspire\Domain\Repayment\Models\Repayment;
 
-class RepaymentPaidEvent {
+class RepaymentPaidEvent
+{
     private Repayment $repayment;
 
     public function __construct(Repayment $repayment)
@@ -16,6 +17,6 @@ class RepaymentPaidEvent {
 
     public function getRepayment(): Repayment
     {
-       return $this->repayment;
+        return $this->repayment;
     }
 }

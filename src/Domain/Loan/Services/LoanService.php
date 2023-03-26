@@ -12,20 +12,24 @@ use TestingAspire\Domain\Repayment\Models\Repayment;
 use TestingAspire\Domain\Repayment\Services\RepaymentService;
 use TestingAspire\Domain\User\Models\User;
 
-class LoanService {
+class LoanService
+{
     private RepaymentService $repaymentService;
-    public function __construct(RepaymentService $repaymentService) {
+    public function __construct(RepaymentService $repaymentService)
+    {
         $this->repaymentService = $repaymentService;
     }
 
-    public function createLoanForCustomer(array $data): Loan {
+    public function createLoanForCustomer(array $data): Loan
+    {
         $loan = Loan::create($data);
         $this->repaymentService->createRepaymentsForLoan($loan);
 
         return $loan;
     }
 
-    public function listLoansFromCustomer(User $user): array {
+    public function listLoansFromCustomer(User $user): array
+    {
         $loans = Loan::where([
             'customer_id' => $user->id,
         ])->with('repayments')->get()->toArray();
@@ -33,7 +37,9 @@ class LoanService {
         return $loans;
     }
 
-    public function getLoanOfCustomer(User $user, $loanId): Loan {
+    public function getLoanOfCustomer(User $user, $loanId): Loan
+    {
+        // phpcs:ignore Generic.Commenting.DocComment.MissingShort
         /** @var \TestingAspire\Domain\Loan\Models\Loan $loan */
         $loan = Loan::with('repayments')->findOrFail($loanId);
         if ((int) $loan->customer_id !== (int) $user->id) {
@@ -43,28 +49,33 @@ class LoanService {
         return $loan;
     }
 
-    public function approveLoanFromAdmin(User $user, $loanId): bool {
+    public function approveLoanFromAdmin(User $user, $loanId): bool
+    {
         if (!$this->isUserAdmin($user)) {
             throw new InvalidArgumentException('Bad Request');
         }
 
+        // phpcs:ignore Generic.Commenting.DocComment.MissingShort
         /** @var \TestingAspire\Domain\Loan\Models\Loan $loan */
         $loan = Loan::with('repayments')->findOrFail($loanId);
 
         return $this->getLoanApproved($user, $loan);
     }
 
-    public function markLoanPaid(Loan $loan): bool {
+    public function markLoanPaid(Loan $loan): bool
+    {
         $loan->state = Loan::STATE_PAID;
 
         return $loan->save();
     }
 
-    private function isUserAdmin(User $user): bool {
+    private function isUserAdmin(User $user): bool
+    {
         return $user->role === User::USER_ROLE_ADMIN;
     }
 
-    private function getLoanApproved(User $user, Loan $loan): bool {
+    private function getLoanApproved(User $user, Loan $loan): bool
+    {
         if ($loan->state === Loan::STATE_PENDING) {
             $loan->state = Loan::STATE_APPROVED;
             $loan->approved_by_admin_id = $user->id;
