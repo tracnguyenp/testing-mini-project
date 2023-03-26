@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use TestingAspire\Domain\User\Models\User;
 
 class AddRoleToUsersTable extends Migration
 {
@@ -22,7 +23,7 @@ class AddRoleToUsersTable extends Migration
         }
 
         Schema::table('users', function (Blueprint $table) {
-            $table->enum('role', ['admin', 'customer'])->default('customer');
+            $table->enum('role', [User::USER_ROLE_ADMIN, User::USER_ROLE_CUSTOMER])->default('customer');
             $table->index('role', 'role_idx');
         });
     }
