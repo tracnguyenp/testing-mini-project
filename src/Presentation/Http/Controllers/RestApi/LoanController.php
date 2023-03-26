@@ -11,10 +11,11 @@ class LoanController extends BaseRestApiV1Controller
 {
     public function __construct()
     {
-      $this->middleware('auth:api');
+        $this->middleware('auth:api');
     }
 
-    public function submitLoan(Request $request) {
+    public function submitLoan(Request $request)
+    {
         die($request->user()->email);
     }
 }

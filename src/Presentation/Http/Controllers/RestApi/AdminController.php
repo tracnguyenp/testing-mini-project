@@ -11,6 +11,6 @@ class AdminController extends UserController
 {
     protected function validateUserRole($role)
     {
-      return $role === User::USER_ROLE_ADMIN;
+        return $role === User::USER_ROLE_ADMIN;
     }
 }

@@ -13,17 +13,17 @@ class UserController extends BaseRestApiV1Controller
 {
     public function register(Request $request)
     {
-      $user = User::create([
+        $user = User::create([
         'name' => $request->name,
         'email' => $request->email,
         'password' => bcrypt($request->password),
-      ]);
+        ]);
 
-      if (empty($user)) {
-        return Json::buildFailedResponse();
-      }
+        if (empty($user)) {
+            return Json::buildFailedResponse();
+        }
 
-      return Json::buildItems(['user_id' => $user->id]);
+        return Json::buildItems(['user_id' => $user->id]);
     }
 
     public function login(Request $request)
@@ -48,6 +48,6 @@ class UserController extends BaseRestApiV1Controller
 
     protected function validateUserRole($role)
     {
-      return $role === User::USER_ROLE_CUSTOMER;
+        return $role === User::USER_ROLE_CUSTOMER;
     }
 }

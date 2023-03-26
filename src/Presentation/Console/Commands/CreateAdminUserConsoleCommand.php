@@ -24,16 +24,6 @@ class CreateAdminUserConsoleCommand extends Command
     protected $description = 'Create the Admin User with {email} {password}';
 
     /**
-     * Create a new command instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        parent::__construct();
-    }
-
-    /**
      * Execute the console command.
      *
      * @return bool
@@ -47,7 +37,11 @@ class CreateAdminUserConsoleCommand extends Command
                 'password' => bcrypt($this->argument('password')),
                 'role' => User::USER_ROLE_ADMIN,
             ]);
-            $this->info(sprintf('A user with the email %s has been created, id: %s', $this->argument('email'), $user->id));
+            $this->info(sprintf(
+                'A user with the email %s has been created, id: %s',
+                $this->argument('email'),
+                $user->id
+            ));
         } catch (\Exception $e) {
             $this->error($e->getMessage());
         }
