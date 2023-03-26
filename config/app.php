@@ -169,11 +169,11 @@ return [
         /*
          * Application Service Providers...
          */
-        App\Providers\AppServiceProvider::class,
-        App\Providers\AuthServiceProvider::class,
-        // App\Providers\BroadcastServiceProvider::class,
-        App\Providers\EventServiceProvider::class,
-        App\Providers\RouteServiceProvider::class,
+        TestingAspire\Application\Providers\AppServiceProvider::class,
+        TestingAspire\Application\Providers\AuthServiceProvider::class,
+        TestingAspire\Application\Providers\BroadcastServiceProvider::class,
+        TestingAspire\Application\Providers\EventServiceProvider::class,
+        TestingAspire\Application\Providers\RouteServiceProvider::class,
         TestingAspire\Application\Providers\JsonServiceProvider::class,
         Laravel\Passport\PassportServiceProvider::class,
     ],
