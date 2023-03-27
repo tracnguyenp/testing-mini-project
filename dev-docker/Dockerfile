@@ -5,7 +5,7 @@ LABEL Maintainer="Trac Nguyen <npbtrac@yahoo.com>" \
 # Install packages
 RUN apk update
 RUN apk --no-cache add nginx supervisor \
-    php7-fpm php7-tokenizer php7-pdo php7-pdo_mysql php7-pdo_pgsql
+    php7-fpm php7-tokenizer php7-pdo php7-pdo_mysql php7-pdo_pgsql php7-xmlwriter php7-bcmath php7-xmlwriter php7-simplexml
 
 # Switch to use a root user from here on
 USER root

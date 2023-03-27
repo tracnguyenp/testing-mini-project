@@ -23,6 +23,8 @@ services:
       - APP_URL=http://127.0.0.1:${HTTP_EXPOSING_PORT}
       - DB_HOST=mysql8
       - DB_PORT=3306
+      - DB_TEST_HOST=mysql8_test
+      - DB_TEST_PORT=3306
 
   mysql8:
     image: mysql:8
@@ -35,6 +37,18 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD
       - MYSQL_DATABASE
+      - MYSQL_PASSWORD
+      - MYSQL_USER
+  mysql8_test:
+    image: mysql:8
+    command: mysqld --authentication_policy=mysql_native_password --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    ports:
+      - 29037:3306
+    volumes:
+      - './dev-docker/mysql8/my.cnf:/etc/mysql/conf.d/my.cnf'
+    environment:
+      - MYSQL_ROOT_PASSWORD
+      - MYSQL_DATABASE=${DB_TEST_DATABASE}
       - MYSQL_PASSWORD
       - MYSQL_USER
 volumes:

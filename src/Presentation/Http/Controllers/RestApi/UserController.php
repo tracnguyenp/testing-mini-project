@@ -14,9 +14,9 @@ class UserController extends BaseRestApiV1Controller
     public function register(Request $request)
     {
         $user = User::create([
-        'name' => $request->name,
-        'email' => $request->email,
-        'password' => bcrypt($request->password),
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => bcrypt($request->password),
         ]);
 
         if (empty($user)) {
