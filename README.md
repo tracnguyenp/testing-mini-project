@@ -8,9 +8,14 @@ cp .env.example .env.testing
 ```
 docker-compose up -d
 ```
+- Init the app
+```
+docker-compose exec web composer install --ignore-platform-reqs
+docker-compose exec web php artisan migrate
+```
 - Generate Laravel Passport keys
 ```
-docker-compose exec web php artisan passport:keys
+docker-compose exec web php artisan passport:keys --force
 ```
 then copy the content of `storage/oauth-private.key` to `PASSPORT_PRIVATE_KEY` and `storage/oauth-public.key` to `PASSPORT_PUBLIC_KEY` in the `.env` file
 - Install Passport client
