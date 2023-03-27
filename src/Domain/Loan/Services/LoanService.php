@@ -5,24 +5,30 @@ declare(strict_types=1);
 namespace TestingAspire\Domain\Loan\Services;
 
 use Carbon\Carbon;
-use Carbon\CarbonImmutable;
 use InvalidArgumentException;
 use TestingAspire\Domain\Loan\Models\Loan;
-use TestingAspire\Domain\Repayment\Models\Repayment;
+use TestingAspire\Domain\Loan\Repositories\LoanEloquentModelRepository;
+use TestingAspire\Domain\Loan\Repositories\LoanRepositoryInterface;
 use TestingAspire\Domain\Repayment\Services\RepaymentService;
 use TestingAspire\Domain\User\Models\User;
 
 class LoanService
 {
     private RepaymentService $repaymentService;
-    public function __construct(RepaymentService $repaymentService)
+    private LoanRepositoryInterface $loanRepository;
+
+    public function __construct(
+        RepaymentService $repaymentService,
+        LoanRepositoryInterface $loanRepository
+    )
     {
         $this->repaymentService = $repaymentService;
+        $this->loanRepository = $loanRepository;
     }
 
     public function createLoanForCustomer(array $data): Loan
     {
-        $loan = Loan::create($data);
+        $loan = $this->loanRepository->createLoanFromData($data);
         $this->repaymentService->createRepaymentsForLoan($loan);
 
         return $loan;

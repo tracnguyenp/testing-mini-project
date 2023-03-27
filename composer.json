@@ -26,7 +26,6 @@
     },
     "autoload": {
         "psr-4": {
-            "App\\": "app/",
             "TestingAspire\\": "src/",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/"
@@ -34,7 +33,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Tests\\": "tests/"
+            "TestingAspire\\Tests\\": "tests/"
         }
     },
     "scripts": {
