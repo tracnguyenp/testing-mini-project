@@ -13,7 +13,7 @@ class SubmitLoanRequest extends FormRequest
     {
         return [
             'amount' => 'required|numeric|min:100|max:900000',
-            'term' => 'required|integer|min:0|max:6',
+            'term' => 'required|integer|min:1|max:6',
             'request_date' => 'required|date_format:Y-m-d|after:today',
         ];
     }
